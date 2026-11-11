@@ -7,7 +7,7 @@ const root=path.resolve(__dirname,'..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'manifest.webmanifest'),'utf8'));
 function ok(name,condition){assert.ok(condition,name);console.log('✓ '+name)}
-ok('HTML title',html.includes('<title>Ehliyet 70</title>'));
+ok('HTML title',html.includes('<title>Ehliyet 70 — Sınav Hazırlık</title>'));
 ok('Five navigation tabs',['home','topics','learn','exam','stats'].every(x=>html.includes('id:"'+x+'"')));
 const m=html.match(/var BANK=(\[[\s\S]*?\]);\s*var CAT=/);
 ok('Question bank present',!!m);
@@ -19,8 +19,14 @@ ok('Honest sample-question warning',html.includes('sorular resmî MEB soruları 
 ok('Free beta access',html.includes('BETA_ACCESS=true'));
 ok('No fake premium purchase switch',!html.includes('data-act="ppro"'));
 ok('Illustrative leaderboard identified',html.includes('<h1>Örnek liderlik tablosu</h1>'));
-ok('Manifest and vector icon available',manifest.name==='Ehliyet 70'&&manifest.icons.every(x=>fs.existsSync(path.join(root,x.src))));
-ok('Vector icon used by app',html.includes('./assets/icon.svg'));
+ok('Manifest assets available',manifest.name==='Ehliyet 70'&&manifest.icons.every(x=>fs.existsSync(path.join(root,x.src))));
+const icon=fs.readFileSync(path.join(root,'assets','apple-touch-icon-180.png'));
+ok('Apple PNG signature',icon.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])));
+ok('Apple PNG is 180 × 180',icon.readUInt32BE(16)===180&&icon.readUInt32BE(20)===180);
+ok('Apple icon linked in the HTML head',/<head>[\s\S]*?<link rel="apple-touch-icon" sizes="180x180" href="\.\/assets\/apple-touch-icon-180\.png\?v=20261111">[\s\S]*?<\/head>/.test(html));
+ok('No duplicate legacy touch icon', (html.match(/rel="apple-touch-icon"/g)||[]).length===1);
+ok('Branded icon on home header',html.includes('var APPICON="./assets/apple-touch-icon-180.png?v=20261111";'));
+ok('Manifest PNG icon metadata', manifest.icons.some(x=>x.src==='./assets/apple-touch-icon-180.png'&&x.type==='image/png'&&x.sizes==='180x180'));
 const js=(html.match(/<script>([\s\S]*?)<\/script>/)||[])[1];
 ok('Inline application script present',!!js);
 cp.execFileSync(process.execPath,['--check','-'],{input:js,stdio:['pipe','pipe','pipe']});
