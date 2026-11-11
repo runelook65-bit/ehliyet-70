@@ -11,6 +11,8 @@ Ehliyet sınavına hazırlık odaklı, mobil öncelikli Türkçe web uygulaması
 - 2026 MEB sınav biçimine göre **50 soru, 45 dakika**, doğru kategori dağılımıyla benzersiz soru seçimi
 - Kaynak kontrolüne dayanan sınav kuralları modülü ve test edilebilir puanlama (`js/exam-rules.js`)
 - Yanlış tekrarları, öğrenme notları, aralıklı tekrar, yıldızlar ve yerel ilerleme
+- **3 özgün animasyonlu trafik senaryosu**: yaya geçidi, kırmızı ışık ve takip mesafesi. SVG canlandırması, 4 seçenekli karar, açıklama ve yerel deneme kaydı ([çalıştır](traffic-scenarios.html))
+- REA / Ghidra için [izinli analiz laboratuvarı yönergesi](docs/REA-GHIDRA-LAB.md) ve salt okunur [hazırlık kontrolü](scripts/rea-preflight.sh). **Üçüncü taraf uygulama ikili dosyası analiz edilmedi.**
 - **Beta boyunca tüm özellikler ücretsiz**; ödeme, mağaza üyeliği ve güvenilir kullanıcı senkronizasyonu henüz yok
 - Liderlik tablosu gerçek kullanıcı verisi değil, **açıkça etiketlenmiş örnek veridir**
 - Beyaz/kırmızı/siyah geçici SVG ikon; onaylı premium PNG varyantlarını GitHub'a aktarma işi hâlâ açık
@@ -31,9 +33,10 @@ Tarayıcıda http://localhost:8080 adresini açın. Bu HTML uygulamasında sunuc
 ```bash
 node tests/smoke.test.cjs
 node tests/exam-rules.test.cjs
+node tests/scenarios.test.cjs
 ```
 
-Bu test; belge, soru örnekleri, manifest/SVG ikon dosyası ve JS sözdizimini denetler. Kapsamlı etkileşim, erişilebilirlik, iOS cihaz ve ödeme testlerinin yerini almaz.
+Bu testler; belge, soru örnekleri, animasyonlu senaryoların cevap tutarlılığı, yerel ilerleme kaydı, manifest/SVG ikon dosyası ve JS sözdizimini denetler. Kapsamlı etkileşim, erişilebilirlik, iOS cihaz ve ödeme testlerinin yerini almaz.
 
 ## iOS ikonu hakkında
 

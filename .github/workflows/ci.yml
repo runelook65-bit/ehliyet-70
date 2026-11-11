@@ -14,3 +14,4 @@ jobs:
         run: |
           node tests/smoke.test.cjs
           node tests/exam-rules.test.cjs
+          node tests/scenarios.test.cjs
