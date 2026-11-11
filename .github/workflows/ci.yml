@@ -11,4 +11,6 @@ jobs:
         with:
           node-version: '22'
       - name: Verify prototype
-        run: node tests/smoke.test.cjs
+        run: |
+          node tests/smoke.test.cjs
+          node tests/exam-rules.test.cjs
