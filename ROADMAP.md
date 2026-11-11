@@ -18,6 +18,14 @@
 Kod: [PR #4](https://github.com/runelook65-bit/ehliyet-70/pull/4) · [İçerik denetimi](CONTENT_AUDIT.md)
 
 
+## Trafik senaryosu prototipi
+
+- ✅ Üç orijinal SVG animasyonlu trafik durumu, tekrar oynatma/duraklatma, dört seçeneğe göre cevap ve açıklama.
+- ✅ Senaryo ilerlemesi mevcut yerel kayıt içerisinde `visualScenarios` altında tutuluyor; sınav puanlarını değiştirmiyor.
+- ✅ `prefers-reduced-motion`, klavye odakları, metinsel senaryo açıklaması ve canlı geri bildirim eklendi.
+- ✅ REA–Ghidra için kurulum öncesi kontrol ve izinli analiz yönergesi hazırlandı; gerçek rakip ikili dosyası incelenmedi.
+- ⏳ Gerçek video, sesli betimleme, iPhone/VoiceOver uçtan uca testi ve eğitmen doğrulaması yapılmadı.
+
 ## Başarı ölçütleri
 
 - Çözülen her sorunun kaydı; denemelerde hata/crash olmaması
@@ -50,7 +58,7 @@ Kod: [PR #4](https://github.com/runelook65-bit/ehliyet-70/pull/4) · [İçerik d
 
 1. 500+ **doğrulanmış özgün** soruyla konu kapsamını güçlendir; sayı hedefi içerik doğruluğundan önce gelmemeli.
 2. Gerçek sınava benzer denemeler (resmî materyal olmadan, özgün içerik); açık açıklamalı yanlış tekrarları.
-3. Levhalar ve kavşaklar için çizimli etkileşimli trafik senaryoları.
+3. ✅ Üç başlangıç animasyonlu trafik senaryosu; sonraki aşamada uzman onayı ve daha fazla sahne.
 4. 7–14 günlük kişisel çalışma planı; zayıf konulara göre akıllı tekrar.
 5. Video değil, önce hızlı yüklenen kısa açıklamalı görsel dersler.
 6. Kullanıcı araştırması: 15–20 sürücü adayıyla görev tabanlı beta.
