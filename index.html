@@ -996,12 +996,12 @@ function viewHome(){
  h+='<button class="wide" data-learn="lessons" style="--c:var(--c-ilkyardim);--cs:var(--cs-ilkyardim)"><span class="tb">'+ringc(lc.t?lc.n/lc.t:0,56,3.5)+'<span class="tbi">'+svg(ICON.bulb)+'</span></span><span class="grow"><span class="h2" style="font-size:17px;display:block">Önce öğren, sonra çöz</span><span class="ts num" style="display:block">Konu anlatımı · '+lc.n+' / '+lc.t+' çalışıldı</span></span>'+svg(ICON.arrow)+'</button>';
  if(wr>0)h+='<div class="banner">'+svg(ICON.alert)+'<div class="grow"><b>'+wr+' yanlışın var</b><br><span class="muted" style="font-size:14px">Tekrar edince kalıcı olur.</span></div><button class="btn small" data-wrong="1">Tekrar et</button></div>';
  h+='<section><div class="sec"><h2 class="h2">Konular</h2></div><div class="grid2">'+CATS.map(tile).join("")+'</div></section>';
- h+='<p class="muted" style="font-size:13px;text-align:center">Sorular örnek sorulardır. Sınavdan önce resmî çıkmış sorularla da çalış.</p>';
+ h+='<p class="muted" style="font-size:13px;text-align:center">Sorular bağımsız örnek sorulardır. Güncel MEB kılavuzunu ve sürücü kursunun doğrulanmış materyallerini kontrol et.</p>';
  return h}
 
 /* ---------- Öğren içeriği ---------- */
 var LESSONS=[
-{id:"l1",k:"trafik",n:"Hız sınırları",m:2,p:["Yerleşim yeri içinde otomobiller için sınır 50 km/saattir.","Yerleşim yeri dışında, bölünmemiş yolda sınır 90 km/saattir.","Bölünmüş yollarda 110, otoyolda 120 km/saattir.","Levha varsa levhadaki sınır geçerlidir. Yağmur, sis ve buzlanmada hızı düşür."]},
+{id:"l1",k:"trafik",n:"Hız sınırları",m:2,p:["Yerleşim yeri içinde otomobiller için sınır 50 km/saattir.","Yerleşim yeri dışında, bölünmemiş yolda sınır 90 km/saattir.","Bölünmüş yollarda 110 km/saattir. KGM otoyollarında genel sınır 130, YİD otoyollarında 140 km/saattir; işaretlere uy.","Levha varsa levhadaki sınır geçerlidir. Yağmur, sis ve buzlanmada hızı düşür."]},
 {id:"l2",k:"trafik",n:"İşaretlerin şekli ve rengi",m:2,p:["Kırmızı çerçeveli daire yasak ve kısıtlama bildirir.","Kırmızı çerçeveli üçgen tehlike uyarısıdır.","Mavi daire mecburiyet bildirir, mavi dikdörtgen bilgi verir.","Sekizgen levha DUR demektir. Ters üçgen levha YOL VER demektir."]},
 {id:"l3",k:"trafik",n:"Kavşakta geçiş önceliği",m:3,p:["Işık, görevli ve levha yoksa eşit yollarda sağdan gelen araç önce geçer.","Dönel kavşakta, aksine işaret yoksa kavşak içindeki araçlar önceliklidir.","Yaya geçidinde yayalar önceliklidir. Yavaşla, gerekirse dur.","Ambulans, itfaiye gibi acil araçlara her zaman yol ver."]},
 {id:"l4",k:"trafik",n:"Takip mesafesi ve geçme",m:2,p:["Takip mesafesi, km/saat hızın yarısı kadar metredir. 80 km/saatte yaklaşık 40 m.","Yağmurlu ve kaygan yolda bu mesafeyi artır.","Tepe üstünde ve görüşün kısıtlı olduğu virajlarda geçme.","Geçmeden önce ayna kontrolü yap ve sinyal ver."]},
@@ -1013,7 +1013,7 @@ var LESSONS=[
 {id:"l10",k:"adap",n:"Saygılı sürüş",m:2,p:["Dar ve dik yolda yokuş aşağı inen araç yol verir.","Karşıdan araç gelince uzun farları kapat.","Kornayı yalnızca gerektiğinde çal.","Sürüş sırasında telefonu elde tutma.","Yorgunsan güvenli bir yerde mola ver.","Engelli park yerine park etme."]}
 ];
 var TIPS=[
-{t:"50 · 90 · 110 · 120",d:"Otomobil hız basamakları: yerleşim içi, dışı, bölünmüş yol, otoyol."},
+{t:"50 · 90 · 110 · 130/140",d:"Otomobiller için: yerleşim içi 50, yerleşim dışı çift yönlü 90, bölünmüş 110; otoyol işletimine göre 130/140 km/sa. Levhayı kontrol et."},
 {t:"Hızın yarısı",d:"Takip mesafesi, hızın yarısı kadar metredir."},
 {t:"30 ve 2",d:"Yetişkinde 30 göğüs basısına 2 soluk."},
 {t:"112",d:"Her acil durumda aranacak tek numara."},
@@ -1030,7 +1030,7 @@ var TIPS=[
 ];
 var FAQ=[
 {q:"Gerçek sınav nasıl?",a:"Teorik sınav 50 sorudan oluşur, süre 45 dakikadır ve geçmek için 70 puan gerekir. Sorular trafik ve çevre, ilk yardım, motor ve araç tekniği, trafik adabı konularından gelir. Güncel kurallar için resmî duyuruları kontrol et."},
-{q:"Buradaki sorular resmî mi?",a:"Hayır. Sorular örnek olarak hazırlandı ve sayıları sınırlı. Sınavdan önce resmî çıkmış sorularla da çalış."},
+{q:"Buradaki sorular resmî mi?",a:"Hayır. Sorular bağımsız örneklerdir ve havuz sınırlıdır. Güncel MEB kılavuzunu ve eğitmeninin doğruladığı materyalleri incele."},
 {q:"Hazırlık kadranı neyi gösteriyor?",a:"Doğruluk oranını, görmüş olduğun soru oranıyla çarpar. 70 üzeri geçme bölgesidir. Çok soru çözüp doğru yaptıkça yükselir."},
 {q:"Yanlışlar testi nasıl çalışır?",a:"Son cevabın yanlış olan sorular burada toplanır. Doğru cevaplayınca listeden çıkar."},
 {q:"Günlük sınavlar nedir?",a:"Her gün tarihe göre sabit, 10 soruluk yeni bir set hazırlanır. Son 7 günün setlerine geri dönebilirsin."},
