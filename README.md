@@ -15,7 +15,7 @@ Ehliyet sınavına hazırlık odaklı, mobil öncelikli Türkçe web uygulaması
 - REA / Ghidra için [izinli analiz laboratuvarı yönergesi](docs/REA-GHIDRA-LAB.md) ve salt okunur [hazırlık kontrolü](scripts/rea-preflight.sh). **Üçüncü taraf uygulama ikili dosyası analiz edilmedi.**
 - **Beta boyunca tüm özellikler ücretsiz**; ödeme, mağaza üyeliği ve güvenilir kullanıcı senkronizasyonu henüz yok
 - Liderlik tablosu gerçek kullanıcı verisi değil, **açıkça etiketlenmiş örnek veridir**
-- Beyaz/kırmızı/siyah geçici SVG ikon; onaylı premium PNG varyantlarını GitHub'a aktarma işi hâlâ açık
+- **iPhone ana ekrana ekleme ikonu:** Gönderilen 70 kadranlı görselin 180×180 PNG sürümü `assets/apple-touch-icon-180.png` içinde; HTML `<head>` bölümünde `apple-touch-icon` ve PWA manifestiyle bağlı. SVG ikon diğer platformlar için yedek olarak korunuyor.
 - [İçerik doğrulama kaydı](CONTENT_AUDIT.md) ve [yol haritası](ROADMAP.md)
 
 ## Çalıştırma
@@ -38,9 +38,13 @@ node tests/scenarios.test.cjs
 
 Bu testler; belge, soru örnekleri, animasyonlu senaryoların cevap tutarlılığı, yerel ilerleme kaydı, manifest/SVG ikon dosyası ve JS sözdizimini denetler. Kapsamlı etkileşim, erişilebilirlik, iOS cihaz ve ödeme testlerinin yerini almaz.
 
-## iOS ikonu hakkında
+## iOS ana ekran ikonu
 
-Depoda geçici SVG ikon kullanılır. Tasarlanan premium beyaz/kırmızı/siyah PNG ikonların 1024, 512, 192, 180 ve 48 piksel sürümleri yerel proje ZIP paketinde mevcuttur; **GitHub'a henüz yüklenmemiştir**. iOS yayını öncesi bu dosyaları `assets/` dizinine ekleyin, `index.html` / manifest bağlantılarını güncelleyin ve görsel kaliteyi gerçek cihazda doğrulayın. SVG, iOS Home Screen için gerekli PNG tesliminin yerine geçmez.
+Gönderilen beyaz, siyah ve kırmızı hız göstergeli özgün görselden 180×180 PNG hazırlandı ve GitHub'a eklendi: [assets/apple-touch-icon-180.png](assets/apple-touch-icon-180.png).
+
+`index.html` ve `traffic-scenarios.html` içindeki `apple-touch-icon` etiketleri PNG dosyasını gösterir. `index.html` içindeki uygulama logosu da bu PNG'yi kullanır. `manifest.webmanifest` PNG ikon ve SVG yedek içerir. iPhone Safari'de **Paylaş → Ana Ekrana Ekle** üzerinden denenmelidir. Eski kısayollar ikon önbelleği nedeniyle yeniden eklenmelidir.
+
+Daha büyük çözünürlükte PNG sürümleri ayrı bir sonraki geliştirme olarak kalır; iPhone cihaz/önbellek testi bu repodaki otomatik testlerle kanıtlanamaz.
 
 ## Kritik açıklar
 
@@ -49,7 +53,7 @@ Depoda geçici SVG ikon kullanılır. Tasarlanan premium beyaz/kırmızı/siyah 
 3. **Hesap ve senkronizasyon:** `localStorage` silinirse ilerleme kaybolabilir.
 4. **Liderlik:** Diğer yarışmacılar örnek veridir; gerçek kişiler gibi sunulmaz.
 5. **Mimari:** UI ve bankanın büyük kısmı tek HTML içinde. Modülerleşme, erişilebilirlik ve gerçek cihaz testi gerekli.
-6. **İkonlar:** Üretim PNG'leri GitHub'da yok; geçici SVG mevcut.
+6. **İkonlar:** iPhone ana ekranı için 180×180 PNG gömüldü; 192/512/1024 PNG çıktılarının üretim kullanımına alınması ve gerçek iPhone'da doğrulama hâlâ bekliyor.
 
 ## Yayın stratejisi
 
