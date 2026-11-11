@@ -1,0 +1,24 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const cp = require('node:child_process');
+const root = path.resolve(__dirname, '..');
+const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
+function ok(name, truth) { assert.ok(truth, name); console.log('✓ ' + name); }
+ok('HTML title', html.includes('<title>Ehliyet 70</title>'));
+ok('Contains all 5 navigation tabs', ['home','topics','learn','exam','stats'].every(x => html.includes('id:"' + x + '"')));
+ok('Contains 4 question categories', ['trafik','ilkyardim','motor','adap'].every(x => html.includes('k:"' + x + '"')));
+const bankBlock = (html.match(/var BANK=\[([\s\S]*?)\];\s*var CAT=/) || [])[1];
+ok('Question bank found', !!bankBlock);
+const count = (bankBlock.match(/\{id:"[^"]+",k:"[^"]+",q:/g) || []).length;
+ok('45 prototype questions present', count === 45);
+ok('Prototype 20/25 explicitly preserved', html.includes('EXAM_LEN=20, EXAM_MIN=25'));
+ok('Vector icon exists', fs.existsSync(path.join(root,'assets','icon.svg')));
+ok('Vector icon linked', html.includes('./assets/icon.svg'));
+ok('Manifest', manifest.name === 'Ehliyet 70' && manifest.icons.length >= 1 && manifest.icons.every(i => fs.existsSync(path.join(root,i.src))));
+const js = (html.match(/<script>([\s\S]*?)<\/script>/) || [])[1];
+ok('Inline JavaScript found', !!js);
+cp.execFileSync(process.execPath, ['--check','-'], {input: js, stdio: ['pipe','pipe','pipe']});
+console.log('✓ JavaScript syntax valid');
+console.log('Static smoke checks passed. Browser and iOS tests remain required.');
