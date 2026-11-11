@@ -7,13 +7,14 @@ Ehliyet sınavına hazırlık odaklı, mobil öncelikli Türkçe web uygulaması
 ## Mevcut işlevler
 
 - Ana sayfa, Konular, Öğren, Sınav, Gelişim sekmeleri
-- Dört alan: Trafik ve Çevre, İlk Yardım, Motor ve Araç Tekniği, Trafik Adabı
-- 45 örnek soru ve cevap açıklamaları
-- 20 soruluk / 25 dakikalık **prototip** deneme sınavı
-- Günlük soru, yanlışlar, öğrenme notları ve aralıklı tekrar
-- Yerel cihazda ilerleme, oyunlaştırma ve profil oluşturma
-- Premium paket **arayüzü ve demo erişim anahtarı** (gerçek ödeme yok)
-- Beyaz/kırmızı/siyah vektör (SVG) ikon ve PWA manifest. Üretim kalitesindeki PNG ikonlar henüz depoya aktarılmadı.
+- Trafik ve Çevre, İlk Yardım, Araç Tekniği, Trafik Adabı alanlarında **53 özgün örnek soru**
+- 2026 MEB sınav biçimine göre **50 soru, 45 dakika**, doğru kategori dağılımıyla benzersiz soru seçimi
+- Kaynak kontrolüne dayanan sınav kuralları modülü ve test edilebilir puanlama (`js/exam-rules.js`)
+- Yanlış tekrarları, öğrenme notları, aralıklı tekrar, yıldızlar ve yerel ilerleme
+- **Beta boyunca tüm özellikler ücretsiz**; ödeme, mağaza üyeliği ve güvenilir kullanıcı senkronizasyonu henüz yok
+- Liderlik tablosu gerçek kullanıcı verisi değil, **açıkça etiketlenmiş örnek veridir**
+- Beyaz/kırmızı/siyah geçici SVG ikon; onaylı premium PNG varyantlarını GitHub'a aktarma işi hâlâ açık
+- [İçerik doğrulama kaydı](CONTENT_AUDIT.md) ve [yol haritası](ROADMAP.md)
 
 ## Çalıştırma
 
@@ -29,6 +30,7 @@ Tarayıcıda http://localhost:8080 adresini açın. Bu HTML uygulamasında sunuc
 
 ```bash
 node tests/smoke.test.cjs
+node tests/exam-rules.test.cjs
 ```
 
 Bu test; belge, soru örnekleri, manifest/SVG ikon dosyası ve JS sözdizimini denetler. Kapsamlı etkileşim, erişilebilirlik, iOS cihaz ve ödeme testlerinin yerini almaz.
@@ -39,12 +41,12 @@ Depoda geçici SVG ikon kullanılır. Tasarlanan premium beyaz/kırmızı/siyah 
 
 ## Kritik açıklar
 
-1. **Resmî sınav simülasyonu değil:** Uygulama şu an 20 soru / 25 dakika ve toplam 45 örnek soru içeriyor. Resmî uygulama formatını ve içerik dağılımını kaynak üzerinden doğrulayın, ardından 50 soru / 45 dakika hedefi için bankayı yeterince büyütün. Bugünkü sınavı 'resmî deneme' diye pazarlamayın.
-2. **Ödeme yapılmıyor:** 7 günlük deneme ve Premium geçişi localStorage üzerinde demo olarak kurgulanmış. `ppro` eylemi herhangi bir gerçek makbuz doğrulaması yapmadan `S.pro.plan` değiştiriyor. Sunucu ve StoreKit 2/Apple In-App Purchase olmadan gelir modeli açılmamalı.
-3. **Kalıcı hesap ve senkronizasyon yok:** `localStorage` silinirse ilerleme kaybolabilir.
-4. **Liderlik verisi örnek:** `RIVALS` dizisi sabit kullanıcıları içeriyor. Gerçek kullanıcı sıralaması olarak sunulmamalı.
-5. **İçerik doğrulaması:** Soruların güncelliği, özellikle mevzuat / ilk yardım bilgileri, konu uzmanı kontrolünden geçmeli. Sorular resmî MEB çıkmış sorular gibi sunulmamalı.
-6. **Tek dosyalı mimari:** Soru bankası, UI, CSS, state ve ödeme önizlemesi tek dosyada; modülerleştirilmeli.
+1. **Soru içeriği:** 50 soruluk örnek deneme biçimi çalışıyor, ancak 53 sorunun her biri uzman tarafından doğrulanmadı. Soru tekrarı ve mevzuat güncelliği önemli risklerdir.
+2. **Ticari ödeme:** Beta ücretsiz. Gösterilen Premium planları taslaktır; Apple IAP/StoreKit veya sunucu tarafı doğrulama bulunmuyor.
+3. **Hesap ve senkronizasyon:** `localStorage` silinirse ilerleme kaybolabilir.
+4. **Liderlik:** Diğer yarışmacılar örnek veridir; gerçek kişiler gibi sunulmaz.
+5. **Mimari:** UI ve bankanın büyük kısmı tek HTML içinde. Modülerleşme, erişilebilirlik ve gerçek cihaz testi gerekli.
+6. **İkonlar:** Üretim PNG'leri GitHub'da yok; geçici SVG mevcut.
 
 ## Yayın stratejisi
 
