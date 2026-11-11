@@ -1,0 +1,37 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const path=require('node:path');
+const rules=require('../js/exam-rules.js');
+const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+const literal=html.match(/var BANK=(\[[\s\S]*?\]);\s*var CAT=/);
+assert.ok(literal,'BANK bulunamadı');
+const bank=vm.runInNewContext('('+literal[1]+')');
+const official=rules.OFFICIAL_2026;
+assert.deepEqual([official.total,official.minutes,official.passingScore],[50,45,70]);
+assert.deepEqual(Object.values(official.categories),[23,12,9,6]);
+const audit=rules.audit(bank);
+assert.equal(bank.length,53,'Beklenen 53 soru: 45 temel + 8 şemalı');
+assert.equal(audit.ready,true,JSON.stringify(audit));
+for(let i=0;i<30;i++){
+ const ids=rules.select(bank,official,a=>a.slice().reverse());
+ assert.equal(ids.length,50);
+ assert.equal(new Set(ids).size,50);
+ const groups={trafik:0,ilkyardim:0,motor:0,adap:0};
+ ids.forEach(id=>{const q=bank.find(x=>x.id===id);groups[q.k]++});
+ assert.deepEqual(groups,official.categories);
+}
+const insufficient=bank.filter(q=>q.k!=='motor');
+assert.equal(rules.audit(insufficient).ready,false);
+assert.throws(()=>rules.select(insufficient),/yetersiz/);
+const duplicate=bank.concat(bank[0]);
+assert.equal(rules.audit(duplicate).ready,false);
+assert.throws(()=>rules.select(duplicate),/yetersiz/);
+assert.equal(rules.score(35,50),70);
+assert.equal(rules.score(34,50),68);
+assert.equal(rules.score(0,50),0);
+assert.throws(()=>rules.score(51,50),RangeError);
+assert.equal(rules.remaining(0,45000,45),2655);
+assert.equal(rules.remaining(0,2700000,45),0);
+assert.equal(rules.remaining(0,2700500,45),0);
+console.log('✓ 2026 50/45 formatı, 4 alan dağılımı, tekillik, puan ve süre kontrolleri başarılı');
