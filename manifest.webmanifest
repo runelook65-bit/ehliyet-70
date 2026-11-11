@@ -1,0 +1,19 @@
+{
+  "name": "Ehliyet 70",
+  "short_name": "Ehliyet 70",
+  "description": "Sürücü adayları için sınav hazırlığı",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
