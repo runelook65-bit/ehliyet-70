@@ -13,7 +13,7 @@ Ehliyet sınavına hazırlık odaklı, mobil öncelikli Türkçe web uygulaması
 - Günlük soru, yanlışlar, öğrenme notları ve aralıklı tekrar
 - Yerel cihazda ilerleme, oyunlaştırma ve profil oluşturma
 - Premium paket **arayüzü ve demo erişim anahtarı** (gerçek ödeme yok)
-- Yeni beyaz/kırmızı/siyah ikon; Apple Touch Icon ve PWA manifest
+- Beyaz/kırmızı/siyah vektör (SVG) ikon ve PWA manifest. Üretim kalitesindeki PNG ikonlar henüz depoya aktarılmadı.
 
 ## Çalıştırma
 
@@ -31,7 +31,11 @@ Tarayıcıda http://localhost:8080 adresini açın. Bu HTML uygulamasında sunuc
 node tests/smoke.test.cjs
 ```
 
-Bu test; belge, soru örnekleri, manifest/ikon dosyaları ve JS sözdizimini denetler. Kapsamlı etkileşim, erişilebilirlik, iOS cihaz ve ödeme testlerinin yerini almaz.
+Bu test; belge, soru örnekleri, manifest/SVG ikon dosyası ve JS sözdizimini denetler. Kapsamlı etkileşim, erişilebilirlik, iOS cihaz ve ödeme testlerinin yerini almaz.
+
+## iOS ikonu hakkında
+
+Depoda geçici SVG ikon kullanılır. Tasarlanan premium beyaz/kırmızı/siyah PNG ikonların 1024, 512, 192, 180 ve 48 piksel sürümleri yerel proje ZIP paketinde mevcuttur; **GitHub'a henüz yüklenmemiştir**. iOS yayını öncesi bu dosyaları `assets/` dizinine ekleyin, `index.html` / manifest bağlantılarını güncelleyin ve görsel kaliteyi gerçek cihazda doğrulayın. SVG, iOS Home Screen için gerekli PNG tesliminin yerine geçmez.
 
 ## Kritik açıklar
 
