@@ -2,7 +2,21 @@
 
 **Tarih:** 11 Kasım 2026  
 **Hedef:** Güvenilir sınav hazırlığı deneyimini doğrulayarak iOS'a geçmek.  
-**Kapsam:** Yüklenen tek HTML prototipi ve yeni ikon.
+**Kapsam:** Web/PWA beta, 53 özgün örnek soru, sınav motoru, test ve iOS'a geçiş.
+
+## 11 Kasım 2026 — Tamamlananlar
+
+- ✅ 2026 MEB biçiminde 50 soru / 45 dakika; trafik 23, ilk yardım 12, araç tekniği 9, trafik adabı 6.
+- ✅ 53 sorudan tekrarsız seçim, geçer puan, süre, eksik/çift kayıt birim testleri.
+- ✅ Örnek deneme olarak açık etiketleme; soruların **resmî MEB soruları olmadığı** uyarısı.
+- ✅ Premium **ücretsiz beta** olarak açıldı; sahte satın alma/yerel PRO erişim anahtarı kaldırıldı.
+- ✅ Sıralama gerçek kullanıcı değil, görünür demo etiketi taşıyor.
+- ✅ KGM güncel otoyol limitlerine göre soru t1/t3 açıklamaları düzeltildi.
+- ✅ GitHub Actions ve Chromium'da 50 soruluk test akışı başarılı.
+- ⚠️ 53 örnek sorunun uzman onayı, gerçek iPhone testleri ve premium PNG ikonlarının GitHub'a aktarılması bekliyor.
+
+Kod: [PR #4](https://github.com/runelook65-bit/ehliyet-70/pull/4) · [İçerik denetimi](CONTENT_AUDIT.md)
+
 
 ## Başarı ölçütleri
 
@@ -16,11 +30,11 @@
 
 | İş | Kabul ölçütü | Öncelik |
 |---|---|---|
-| 20/25 prototip sınavını açıkça demo olarak etiketle | Kullanıcı bunu gerçek sınav sanmaz | P0 |
-| 50 soru / 45 dakika akışı için soru havuzunu ve dağılımı doğrula | Tekrar etmeyen soru seti, puanlama ve süre testleri | P0 |
-| 45 örnek soruyu konu uzmanına incelet | Hatalı veya eski bilgi yayına çıkmaz | P0 |
-| Demo Premium anahtarını gerçek satın alma olarak sunma | Ödeme yapılmayan akışta "demo" açıklaması görünür | P0 |
-| Sabit `RIVALS` liderlik tablosunu demo etiketiyle sun veya kaldır | Gerçek kullanıcı sıralaması izlenimi oluşmaz | P0 |
+| ~~20/25 prototip sınavını kaldır ve örnek deneme etiketle~~ | ✅ 50/45 bağımsız örnek deneme, kaynak bildirimi | Tamamlandı |
+| ~~50 soru / 45 dakika akışı~~ | ✅ Teknik format ve testler tamam; **içerik doğrulaması ayrı bekliyor** | Teknik tamamlandı |
+| 53 özgün örnek soruyu konu uzmanına incelet | Mevzuat/ilk yardım doğruluğu ve kaynak tarihi doğrulanmalı | P0 · Açık |
+| ~~Demo Premium anahtarını gerçek satın alma olarak sunma~~ | ✅ Ücretsiz beta, planlar örnek | Tamamlandı |
+| ~~Sabit `RIVALS` verisinin statüsü~~ | ✅ Örnek liderlik açık etiketli | Tamamlandı |
 
 ## P1 — Teknik istikrar / beta
 
