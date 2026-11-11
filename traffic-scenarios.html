@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Animasyonlu Trafik Senaryoları | Ehliyet 70</title>
+<meta name="theme-color" content="#ffffff"><meta name="description" content="Özgün animasyonlu trafik senaryolarıyla güvenli sürüş kararlarını öğren.">
+<link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:light;--ink:#101014;--muted:#667080;--red:#e31c29;--bg:#f6f7fa;--line:#e2e5eb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 18px env(safe-area-inset-bottom)}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid var(--red);outline-offset:3px}a{color:inherit}
+.shell{max-width:760px;margin:auto;padding:18px 0 46px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.back{font-weight:800;text-decoration:none;border:1px solid var(--line);background:white;padding:10px 15px;border-radius:14px}.mark{font-weight:900;letter-spacing:.05em;font-size:14px}.mark b{color:var(--red)}
+.intro{margin:24px 0 16px}.kicker{color:var(--red);font-size:12px;letter-spacing:.14em;font-weight:900;text-transform:uppercase}.intro h1{font-size:clamp(25px,5vw,38px);letter-spacing:-.04em;line-height:1.12;margin:8px 0}.intro p{color:var(--muted);max-width:600px;margin:0}
+.card{background:white;border:1px solid var(--line);border-radius:24px;box-shadow:0 14px 34px rgba(20,32,55,.05);overflow:hidden}
+.cardpad{padding:20px}.steps{display:flex;justify-content:space-between;align-items:center;gap:8px}.count{font-weight:800;font-size:13px;color:var(--muted)}.dots{display:flex;gap:8px}.dot{width:9px;height:9px;border-radius:50%;background:#d5d8de}.dot.on{background:var(--red);width:25px;border-radius:16px}
+.scene{background:#edf1f5;border-bottom:1px solid var(--line)}#art{width:100%;aspect-ratio:600/350;display:block}#art svg{width:100%;height:100%;display:block}
+#art.paused *{animation-play-state:paused!important}.car-cross{animation:crossCar 6.5s linear infinite}.walker{animation:walk 6.5s linear infinite}.car-signal{animation:signalCar 6.5s ease-in-out infinite}.car-distance{animation:distanceCar 6.5s ease-in-out infinite}
+@keyframes crossCar{0%{transform:translateY(125px)}27%,100%{transform:translateY(0)}}@keyframes walk{0%,26%{transform:translateX(0);opacity:1}66%,100%{transform:translateX(270px);opacity:1}}@keyframes signalCar{0%{transform:translateX(-185px)}36%,100%{transform:translateX(0)}}@keyframes distanceCar{0%{transform:translateX(-130px)}42%,100%{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){#art *{animation:none!important}.scene-note{font-weight:700}}
+.controlrow{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:0 0 12px}.mini{border:1px solid var(--line);border-radius:12px;padding:8px 13px;background:white;font-weight:700;font-size:13px;min-height:42px}.mini:hover{background:#f2f3f5}.scene-note{font-size:12px;color:var(--muted)}
+#title{margin:8px 0 3px;font-size:24px;letter-spacing:-.025em}#desc{margin:0 0 15px;color:var(--muted)}#question{font-size:18px;margin:0 0 14px}.answers{display:grid;gap:9px}.answer{border:1.5px solid #dee1e6;background:white;border-radius:15px;text-align:left;padding:14px 15px;min-height:52px;font-weight:600;display:flex;align-items:flex-start;gap:12px}.answer:hover:not(:disabled){border-color:var(--red);background:#fff7f7}.answer:disabled{cursor:default;opacity:.65}.answer b{color:var(--red);font-weight:900}.answer.correct{border-color:#161719;background:#f6f6f6;opacity:1}.answer.wrong{border-color:var(--red);background:#fff1f2;opacity:1}
+.feedback{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:14px;background:#f9fafb;outline:none}.feedback[hidden]{display:none}.feedback strong{display:block}.feedback p{margin:5px 0 0;color:#444}
+.next{width:100%;border:0;background:var(--ink);color:white;font-weight:800;border-radius:14px;margin-top:14px;padding:14px;min-height:50px}.next[hidden]{display:none}
+.disclaimer{margin:16px 2px 0;font-size:13px;color:var(--muted)}.progress{margin:13px 0 0;font-size:13px;color:var(--muted)}.error{color:var(--red)}
+@media(max-width:500px){.cardpad{padding:16px}.intro{margin-top:18px}.answer{padding:12px}.scene-note{flex-basis:100%}}
+</style></head>
+<body><main class="shell">
+<header class="top"><a class="back" href="./index.html" aria-label="Ehliyet 70 uygulamasına dön">← Geri</a><span class="mark">EHLİYET <b>70</b></span></header>
+<section class="intro"><span class="kicker">Yeni · Görsel öğrenme</span><h1>Animasyonlu trafik senaryoları</h1>
+<p>Yolda karşılaşabileceğin durumları incele, doğru kararı ver. İlerleme bilgisi yalnızca bu cihazda tutulur.</p></section>
+<section class="card" aria-label="Trafik senaryosu">
+<div class="cardpad steps"><span class="count" id="step">Senaryo 1 / 3</span><span class="dots" id="dots" aria-hidden="true"></span></div>
+<div class="scene"><div id="art" role="group" aria-label="Animasyonlu trafik durumu"></div></div>
+<div class="cardpad">
+<div class="controlrow"><button class="mini" id="toggle" type="button" aria-pressed="false">⏸ Duraklat</button><button class="mini" id="replay" type="button">↻ Baştan oynat</button><span class="scene-note">Özgün SVG canlandırması · Gerçek trafik videosu değildir</span></div>
+<h2 id="title"></h2><p id="desc"></p><h3 id="question"></h3><div class="answers" id="answers"></div>
+<div class="feedback" id="feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
+<button class="next" id="next" type="button" hidden>Sonraki senaryo →</button></div></section>
+<p class="progress" id="progress"></p><p class="disclaimer">Bu senaryolar Ehliyet 70 tarafından bağımsız olarak hazırlanmış eğitim örnekleridir; resmî MEB sorusu veya sürüş eğitiminin yerine geçen uygulama değildir.</p>
+</main><script src="./js/scenario-engine.js"></script><script src="./js/scenario-ui.js"></script></body></html>
